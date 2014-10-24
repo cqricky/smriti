@@ -5,10 +5,10 @@
 Ajax跨域访问普通的解决方式可以采用jsonp形式，如：
 ```javascript
 $.ajax({
-         type : "post",
-         async:true,
-	 url : vurl,
-	 dataType : "jsonp",
+        type : "post",
+        async:true,
+	url : vurl,
+	dataType : "jsonp",
 	timeout:10000,// 超时10秒
 	contentType : "application/x-www-form-urlencoded; charset=utf-8",  
 	success : function(data,textStatus){
@@ -45,15 +45,15 @@ server {
 
 
         location ~ ^/api/{ 
-	 proxy_pass              http://目标服务器的地址(如：11.11.11.11:8081); 
-         proxy_redirect          off; 
-         proxy_set_header        X-Real-IP       目标服务器的IP(如：11.11.11.11); 
+	proxy_pass              http://目标服务器的地址(如：11.11.11.11:8081); 
+        proxy_redirect          off; 
+        proxy_set_header        X-Real-IP       目标服务器的IP(如：11.11.11.11); 
 	}
 
 	location ~ ^/test/{ 
-	 proxy_pass              http://请求服务器的IP(如：22.22.22.22:8082); 
-         proxy_redirect          off; 
-         proxy_set_header        X-Real-IP       请求服务器的IP(如：22.22.22.22); 
+	proxy_pass              http://请求服务器的IP(如：22.22.22.22:8082); 
+        proxy_redirect          off; 
+        proxy_set_header        X-Real-IP       请求服务器的IP(如：22.22.22.22); 
 	}
 
 ```
@@ -71,10 +71,10 @@ localhost/api
 ajax的代码访问直接以普通的json访问，示例如下：
 ```javascript
 $.ajax({
-         type : "post",
-         async:true,
-	 url : vurl,
-	 dataType : "json",
+        type : "post",
+        async:true,
+	url : vurl,
+	dataType : "json",
 	timeout:10000,// 超时10秒
 	contentType : "application/x-www-form-urlencoded; charset=utf-8",  
 	success : function(data,textStatus){
