@@ -3,7 +3,7 @@
 * 项目的分层设计
 
 Ajax跨域访问普通的解决方式可以采用jsonp形式，如：
-```
+```javascript
 $.ajax({
          type : "post",
          async:true,
@@ -18,7 +18,7 @@ $.ajax({
 ```
 
 该方式访问，会在客户端请求时浏览器自动带上callback参数，服务器端再根据该callback参数，拼装返回结果，如java的servlet代码：
-```
+```javascript
 String callback = request.getParameter("callback");
 String json = 返回数据;
 PrintWriter out = response.getWriter();
@@ -29,7 +29,7 @@ if (out != null) {
 ```
 
 服务器返回的代码示例：
-```
+```javascript
 jQuery1111012659700540825725_1414128060897({"data":null,"id":0,"code":0,"msg":null})
 ```
 
@@ -37,7 +37,7 @@ jQuery1111012659700540825725_1414128060897({"data":null,"id":0,"code":0,"msg":nu
 
 
 另外一种解决跨域方式利用nginx的反向代理，就是把请求地址和服务器的地址都代理到同一个域名下，这样就变成了在一个域名下方式，ajax访问时就可以用普通方式访问。配置也相当简单，范例如下：
-```
+```javascript
 server {
         listen       80;
         server_name  localhost;
@@ -59,17 +59,17 @@ server {
 ```
 
 此时本地的请求地址变为：
-```
+```javascript
 localhost/test
 ```
 
 访问的远程服务器地址变为：
-```
+```javascript
 localhost/api
 ```
 
 ajax的代码访问直接以普通的json访问，示例如下：
-```
+```javascript
 $.ajax({
          type : "post",
          async:true,
