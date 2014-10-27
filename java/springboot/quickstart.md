@@ -46,5 +46,5 @@ class DemoController {
 
 ![demo_console](images/demo_console.jpg)
 
-在浏览器中访问[](http://localhost:8080/),即可看到页面成功输出：Hello world!
+在浏览器中访问[http://localhost:8080/](http://localhost:8080/),即可看到页面成功输出：Hello world!
 
