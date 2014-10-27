@@ -5,4 +5,9 @@
 - Spring Tool Suite™ 3.6
 
 ### 创建maven项目
-![new_spring_starter]（https://raw.githubusercontent.com/Utgard/smriti/master/java/springboot/images/new_spring_starter.png ）
+File-->New-->Spring Starter Project
+![new_spring_starter](images/new_spring_starter.jpg)
+勾选web-->Next
+![starter_project](images/starter_project.jpg)
+保持默认-->Finish
+![start_project_next](images/start_project_next.jpg)
