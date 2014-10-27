@@ -7,5 +7,7 @@
 ### 创建maven项目
 File-->New-->Spring Starter Project
 ![new_spring_starter](images/new_spring_starter.jpg)
+勾选web-->Next
 ![starter_project](images/starter_project.jpg)
-![starter_project_next](images/starter_project_next.jpg)
+保持默认-->Finish
+![start_project_next](images/start_project_next.jpg)
