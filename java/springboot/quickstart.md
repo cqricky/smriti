@@ -22,4 +22,29 @@ File-->New-->Spring Starter Project
 
 ![projectt](images/project.jpg)
 
+修改Application.java，添加一个Controller
+```java
+@Configuration
+@ComponentScan
+@EnableAutoConfiguration
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+}
+
+@RestController
+class DemoController {
+	@RequestMapping("/")
+	public String hello() {
+		return "Hello world!";
+	}
+}
+```
+右键-->Run as -->Java Application
+
+![demo_console](images/demo_console.jpg)
+
+在浏览器中访问[](http://localhost:8080/),即可看到Hello world!
 
