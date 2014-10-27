@@ -5,4 +5,7 @@
 - Spring Tool Suite™ 3.6
 
 ### 创建maven项目
-![new_spring_starter](images/new_spring_starter.jpg "new_spring_starter")
+File-->New-->Spring Starter Project
+![new_spring_starter](images/new_spring_starter.jpg)
+![starter_project](images/starter_project.jpg)
+![starter_project_next](images/starter_project_next.jpg)
