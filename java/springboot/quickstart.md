@@ -5,4 +5,4 @@
 - Spring Tool Suite™ 3.6
 
 ### 创建maven项目
-![new_spring_starter](../images/new_spring_starter.jpg "new_spring_starter")
+![new_spring_starter](images/new_spring_starter.jpg "new_spring_starter")
