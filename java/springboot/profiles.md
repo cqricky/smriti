@@ -1,7 +1,7 @@
 spring boot通过profiles使得某些特定的配置只在某些条件下才会生效,比如之前提到的开发,测试,生产对应的三种不同的配置.
 
 在resources目录下添加2个配置文件,application-dev.properties,application-test.properties,分别代表开发和测试环境下的配置项:
-```
+```properties
 #application-dev.properties
 app.name=demo for dev
 app.code=111111
