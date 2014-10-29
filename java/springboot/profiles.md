@@ -38,3 +38,8 @@ spring.profiles.active=test
 ```
 name:demo for test,code:222222
 ```
+
+也可以通过命令行设置profiles,多个profile用逗号分隔:
+```shell
+java -jar demo-0.0.1-SNAPSHOT.jar  --spring.profiles.active=dev,hsqldb
+```
