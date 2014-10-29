@@ -7,13 +7,13 @@ app.name=demo for dev
 app.code=111111
 ```
 
-```
+```properties
 #application-test.properties
 app.name=demo for dev
 app.code=222222
 ```
 修改application.properties
-```
+```properties
 #application.properties
 app.name=demo
 app.code=123456
@@ -26,7 +26,7 @@ spring.profiles.active=dev
 name:demo for dev,code:111111
 ```
 再次修改application.properties
-```
+```properties
 #application.properties
 app.name=demo
 app.code=123456
