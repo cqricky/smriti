@@ -43,3 +43,31 @@ name:demo for test,code:222222
 ```shell
 java -jar demo-0.0.1-SNAPSHOT.jar  --spring.profiles.active=dev,hsqldb
 ```
+
+在Java代码中则可以通过@Profile注解使得某些配置只在profile被激活时才生效:
+```java
+@Configuration
+@Profile("production")
+public class ProductionConfiguration {
+  // ...
+}
+```
+上面的Configuration只有在被激活的profile包含production时才会生效.
+
+profile也可以声明在@Controller,@Bean上,更多灵活的用法请自行探索.
+```java
+@RestController
+@Profile("pro")
+public class DemoController {
+    @Value("${app.name}")
+    String appName;
+
+    @Value("${app.code}")
+    String appCode;
+
+    @RequestMapping("/appInfo")
+    public String info() {
+        return "name:"+appName+",code:"+appCode;
+    }
+}
+```
