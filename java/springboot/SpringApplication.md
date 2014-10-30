@@ -62,3 +62,15 @@ characterEncoding = UTF-8
     }
 ```
 
+- 定制banner
+可以通过如下方式禁用banner的显示
+```java
+public static void main(String[] args) {
+SpringApplication app = new SpringApplication(MySpringConfiguration.class);
+app.setShowBanner(false);
+app.run(args);
+}
+```
+也可以通过在classpath下添加banner.txt或者在配置文件中指定 banner.location,实现banner的定制.
+
+
