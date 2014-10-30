@@ -47,7 +47,7 @@ public class AppConfig {
     }
 }
 ```
-```
+```properties
 #application.properties
 characterEncoding = UTF-8
 ```
