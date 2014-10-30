@@ -51,5 +51,14 @@ public class AppConfig {
 #application.properties
 characterEncoding = UTF-8
 ```
-上面的AppConfig声明了2个bean,一个DispatcherServlet,一个CharacterEncodingFilter,characterEncodingFilter从配置文件中读取编码作为参数;
+- 上面的AppConfig声明了2个bean,一个DispatcherServlet,一个CharacterEncodingFilter,characterEncodingFilter从配置文件中读取编码作为参数;
+- 实际开发中可以根据项目需要定义任意多个bean,方法名会作为beanname,返回类型作为beantype;
+- 也可以通过如下方式对bean进行定制:
+```java
+    @Bean(name="xxx")
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    public Object foo(){
+        return new Object();
+    }
+```
 
