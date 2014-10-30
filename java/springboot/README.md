@@ -5,3 +5,4 @@
 - [配置文件](配置文件.md)
 - [profiles](profiles.md)
 - [日志配置](日志配置.md)
+- [SpringApplication.md](SpringApplication.md)
