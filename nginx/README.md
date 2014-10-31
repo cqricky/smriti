@@ -1,2 +1,1 @@
 - [Nginx反向代理解决Ajax跨域访问](Nginx反向代理解决Ajax跨域访问.md)
-- [Nginx+Lua+GraphicsMagick实现实时图片压](Nginx+Lua+GraphicsMagick实现实时图片压缩.md)
