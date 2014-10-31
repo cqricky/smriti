@@ -7,3 +7,4 @@
 - [日志配置](日志配置.md)
 - [SpringApplication](SpringApplication.md)
 - [Configuration](Configuration.md)
+- [静态资源](静态资源.md)
