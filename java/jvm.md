@@ -125,3 +125,17 @@ Compiled  Size  Type Method
 * DSS：当前需要survivor的容量 (字节)（Eden区已满）
 * TT： 持有次数限制
 * MTT ： 最大持有次数限制
+
+
+## 开启远程监控
+```shell
+cd $JAVA_HOME/bin/
+vim jstatd.all.policy
+
+grant codebase "file:${java.home}/../lib/tools.jar" {
+    permission java.security.AllPermission;
+};
+
+nohup jstatd -J-Djava.security.policy=$JAVA_HOME/bin/jstatd.all.policy  -J-Djava.rmi.server.hostname=115.28.189.73 &
+
+```
