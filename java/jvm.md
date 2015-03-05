@@ -136,6 +136,6 @@ grant codebase "file:${java.home}/../lib/tools.jar" {
     permission java.security.AllPermission;
 };
 
-nohup jstatd -J-Djava.security.policy=$JAVA_HOME/bin/jstatd.all.policy  -J-Djava.rmi.server.hostname=115.28.189.73 &
+nohup jstatd -J-Djava.security.policy=$JAVA_HOME/bin/jstatd.all.policy  -J-Djava.rmi.server.hostname=xxx.xx.xxx.xx &
 
 ```
