@@ -90,16 +90,16 @@ Compiled  Size  Type Method
     2360    438    1 com/mysql/jdbc/util/ReadAheadInputStream fill
 
 ```
-* S0C：年轻代中第一个survivor（幸存区）的容量 (字节)
-* S1C：年轻代中第二个survivor（幸存区）的容量 (字节)
-* S0U：年轻代中第一个survivor（幸存区）目前已使用空间 (字节)
-* S1U：年轻代中第二个survivor（幸存区）目前已使用空间 (字节)
-* EC：年轻代中Eden（伊甸园）的容量 (字节)
-* EU：年轻代中Eden（伊甸园）目前已使用空间 (字节)
+* S0C：年轻代中第一个survivor的容量 (字节)
+* S1C：年轻代中第二个survivor的容量 (字节)
+* S0U：年轻代中第一个survivor目前已使用空间 (字节)
+* S1U：年轻代中第二个survivor目前已使用空间 (字节)
+* EC：年轻代中Eden的容量 (字节)
+* EU：年轻代中Eden目前已使用空间 (字节)
 * OC：Old代的容量 (字节)
 * OU：Old代目前已使用空间 (字节)
-* PC：Perm(持久代)的容量 (字节)
-* PU：Perm(持久代)目前已使用空间 (字节)
+* PC：Perm的容量 (字节)
+* PU：Perm目前已使用空间 (字节)
 * YGC：从应用程序启动到采样时年轻代中gc次数
 * YGCT：从应用程序启动到采样时年轻代中gc所用时间(s)
 * FGC：从应用程序启动到采样时old代(全gc)gc次数
@@ -114,14 +114,14 @@ Compiled  Size  Type Method
 * PGCMN：perm代中初始化(最小)的大小 (字节) 
 * PGCMX：perm代的最大容量 (字节)   
 * PGC：perm代当前新生成的容量 (字节)
-* S0：年轻代中第一个survivor（幸存区）已使用的占当前容量百分比
-* S1：年轻代中第二个survivor（幸存区）已使用的占当前容量百分比
-* E：年轻代中Eden（伊甸园）已使用的占当前容量百分比
+* S0：年轻代中第一个survivor已使用的占当前容量百分比
+* S1：年轻代中第二个survivor已使用的占当前容量百分比
+* E：年轻代中Eden已使用的占当前容量百分比
 * O：old代已使用的占当前容量百分比
 * P：perm代已使用的占当前容量百分比
-* S0CMX：年轻代中第一个survivor（幸存区）的最大容量 (字节)
-* S1CMX ：年轻代中第二个survivor（幸存区）的最大容量 (字节)
-* ECMX：年轻代中Eden（伊甸园）的最大容量 (字节)
-* DSS：当前需要survivor（幸存区）的容量 (字节)（Eden区已满）
+* S0CMX：年轻代中第一个survivor）的最大容量 (字节)
+* S1CMX ：年轻代中第二个survivor）的最大容量 (字节)
+* ECMX：年轻代中Eden）的最大容量 (字节)
+* DSS：当前需要survivor的容量 (字节)（Eden区已满）
 * TT： 持有次数限制
 * MTT ： 最大持有次数限制
