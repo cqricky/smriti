@@ -40,7 +40,9 @@ public class AppConfig extends WebMvcConfigurerAdapter implements EmbeddedServle
 	}
 ```
 
-- 1.2.+的BUG
+
+- 1.2.+的版本,会导致启动报错(Cannot subclass final class class com.sun.proxy.$Proxy49),修复方法如下：
+
 ```
 # application.properties
 # 1.2.+ bug
