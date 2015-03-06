@@ -10,6 +10,7 @@
 - [静态资源](静态资源.md)
 - [错误处理](错误处理.md)
 - [数据访问](数据访问.md)
+- [整合mybatis](整合mybatis.md)
 - [视图支持](视图支持.md)
 - [数据迁移](数据迁移.md)
 - [security](security.md)
