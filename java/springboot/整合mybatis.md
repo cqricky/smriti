@@ -45,7 +45,7 @@ public class AppConfig extends WebMvcConfigurerAdapter implements EmbeddedServle
 
 ```
 # application.properties
-# 1.2.+ bug
+# 1.2.+ bug https://github.com/spring-projects/spring-boot/issues/1929
 spring.dao.exceptiontranslation.enabled=false
 ```
 
