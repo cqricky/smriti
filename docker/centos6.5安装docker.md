@@ -1,4 +1,4 @@
-先升级内核,[yum升级CentOS内核](../linux/yum升级CentOS内核.md),再安装：
+先升级内核([yum升级CentOS内核](../linux/yum升级CentOS内核.md)),再安装：
 ```shell
 
 sudo yum -y remove docker
