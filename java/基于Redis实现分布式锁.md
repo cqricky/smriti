@@ -37,7 +37,7 @@ public class RedisLock implements Lock{
 	@Autowired
 	StringRedisTemplate stringRedisTemplate;
 	
-	private static final String LOCK_PREFIX = "fxt:lock:";
+	private static final String LOCK_PREFIX = "lock:";
 	private static final int LOCK_EXPIRE_SECONDS = 5;
 
 	@Override
