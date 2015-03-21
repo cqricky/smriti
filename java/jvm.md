@@ -168,10 +168,10 @@ nohup jstatd -J-Djava.security.policy=$JAVA_HOME/bin/jstatd.all.policy  -J-Djava
 
 ## 调试
 JVM提供了大量命令行参数，打印信息，供调试使用。主要有以下一些：
-- -XX:+PrintGC：输出形式：[GC 118250K->113543K(130112K), 0.0094143 secs] [Full GC 121376K->10414K(130112K), 0.0650971 secs]
-- -XX:+PrintGCDetails：输出形式：[GC [DefNew: 8614K->781K(9088K), 0.0123035 secs] 118250K->113543K(130112K), 0.0124633 secs] [GC [DefNew: 8614K->8614K(9088K), 0.0000665 secs][Tenured: 112761K->10414K(121024K), 0.0433488 secs] 121376K->10414K(130112K), 0.0436268 secs]
+- -XX:+PrintGC
+- -XX:+PrintGCDetails
 - -XX:+PrintGCTimeStamps -XX:+PrintGC：PrintGCTimeStamps可与上面两个混合使用 
-- -XX:+PrintGCApplicationConcurrentTime：打印每次垃圾回收前，程序未中断的执行时间。可与上面混合使用。输出形式：Application time: 0.5291524 seconds
-- -XX:+PrintGCApplicationStoppedTime：打印垃圾回收期间程序暂停的时间。可与上面混合使用。输出形式：Total time for which application threads were stopped: 0.0468229 seconds
+- -XX:+PrintGCApplicationConcurrentTime：打印每次垃圾回收前，程序未中断的执行时间。可与上面混合使用。
+- -XX:+PrintGCApplicationStoppedTime：打印垃圾回收期间程序暂停的时间。可与上面混合使用。
 - -XX:PrintHeapAtGC: 打印GC前后的详细堆栈信息。
 - -Xloggc:filename:与上面几个配合使用，把相关日志信息记录到文件以便分析。
