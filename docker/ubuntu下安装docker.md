@@ -1,4 +1,6 @@
 ```shell
+$ sudo usermod -aG docker utgard
+
 $ sudo apt-get update 
 
 $ sudo apt-get install wget
