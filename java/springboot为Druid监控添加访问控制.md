@@ -7,7 +7,7 @@ druid.stat.loginPassword=showmethemoney
 
 - 修改数据源配置
 ```java
-  // DataSourceConfig.java
+  	// DataSourceConfig.java
 	@Value("${druid.stat.loginUsername}")
 	private String loginUsername;
 
