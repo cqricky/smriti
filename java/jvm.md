@@ -175,3 +175,12 @@ JVM提供了大量命令行参数，打印信息，供调试使用。主要有�
 - -XX:+PrintGCApplicationStoppedTime：打印垃圾回收期间程序暂停的时间。可与上面混合使用。
 - -XX:PrintHeapAtGC: 打印GC前后的详细堆栈信息。
 - -Xloggc:filename:与上面几个配合使用，把相关日志信息记录到文件以便分析。
+
+## 示例配置
+
+```
+-server -Xms2560m -Xmx2560m -Xmn1024m -XX:PermSize=128m -XX:MaxPermSize=128m -Xss256k 
+-XX:ParallelGCThreads=4 -XX:+UseConcMarkSweepGC -XX:+UseParNewGC 
+-XX:+DisableExplicitGC -Djava.awt.headless=true -Dorg.apache.jasper.compiler.Parser.STRICT_QUOTE_ESCAPING=false
+-XX:+PrintGCDetails -XX:+HeapDumpOnOutOfMemoryError -Xloggc:./log/gc.log
+```
