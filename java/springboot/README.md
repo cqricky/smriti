@@ -11,6 +11,7 @@
 - [错误处理](错误处理.md)
 - [数据访问](数据访问.md)
 - [整合mybatis](整合mybatis.md)
+- [整合Redis](整合Redis.md)
 - [整合springsession](整合springsession.md)
 - [整合springcache](整合springcache.md)
 - [视图支持](视图支持.md)
