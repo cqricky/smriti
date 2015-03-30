@@ -116,5 +116,15 @@ OK
 2) "spring:session:sessions:7df6cb4d-36af-4716-ace1-abb552f22c21"
 3) "\xac\xed\x00\x05t\x00'userId:0f01ce2c9f884aa0b5fc5d1ff9471ce0"
 
+# FLUSHDB
+# 清空当前数据库中的所有 key。
+127.0.0.1:6379> DBSIZE
+(integer) 2
+127.0.0.1:6379> FLUSHDB
+OK
+127.0.0.1:6379> DBSIZE
+(integer) 0
+127.0.0.1:6379>
+
 
 ```
