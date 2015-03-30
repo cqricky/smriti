@@ -84,5 +84,20 @@ root     24536  0.0  0.0 103248   836 pts/3    S+   10:11   0:00 grep redis
 OK
 127.0.0.1:6379> keys *
 (empty list or set)
-127.0.0.1:6379>
+
+# KEYS pattern
+# KEYS * 匹配数据库中所有 key 。
+# KEYS h?llo 匹配 hello ， hallo 和 hxllo 等。
+# KEYS h*llo 匹配 hllo 和 heeeeello 等。
+# KEYS h[ae]llo 匹配 hello 和 hallo ，但不匹配 hillo 。
+127.0.0.1:6379> keys *
+1) "spring:session:expirations:1427695320000"
+2) "roleCache~keys"
+3) "spring:session:sessions:7df6cb4d-36af-4716-ace1-abb552f22c21"
+4) "\xac\xed\x00\x05t\x00'userId:0f01ce2c9f884aa0b5fc5d1ff9471ce0"
+127.0.0.1:6379> keys spring*
+1) "spring:session:expirations:1427695320000"
+2) "spring:session:sessions:7df6cb4d-36af-4716-ace1-abb552f22c21"
+
+
 ```
