@@ -99,5 +99,22 @@ OK
 1) "spring:session:expirations:1427695320000"
 2) "spring:session:sessions:7df6cb4d-36af-4716-ace1-abb552f22c21"
 
+# DEL key [key ...]
+# 删除给定的一个或多个 key 。不存在的 key 会被忽略。
+127.0.0.1:6379> keys *
+1) "spring:session:expirations:1427695320000"
+2) "roleCache~keys"
+3) "spring:session:sessions:7df6cb4d-36af-4716-ace1-abb552f22c21"
+4) "\xac\xed\x00\x05t\x00'userId:0f01ce2c9f884aa0b5fc5d1ff9471ce0"
+127.0.0.1:6379> keys spring*
+1) "spring:session:expirations:1427695320000"
+2) "spring:session:sessions:7df6cb4d-36af-4716-ace1-abb552f22c21"
+127.0.0.1:6379> del "spring:session:expirations:1427695320000"
+(integer) 1
+127.0.0.1:6379> keys *
+1) "roleCache~keys"
+2) "spring:session:sessions:7df6cb4d-36af-4716-ace1-abb552f22c21"
+3) "\xac\xed\x00\x05t\x00'userId:0f01ce2c9f884aa0b5fc5d1ff9471ce0"
+
 
 ```
