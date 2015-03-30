@@ -77,4 +77,12 @@ root     24536  0.0  0.0 103248   836 pts/3    S+   10:11   0:00 grep redis
 ```
 
 - 常用命令
-  - FLUSHALL 清空整个 Redis 服务器的数据(删除所有数据库的所有 key )。
+
+```bash
+# FLUSHALL 清空整个 Redis 服务器的数据(删除所有数据库的所有 key )。
+127.0.0.1:6379> FLUSHALL
+OK
+127.0.0.1:6379> keys *
+(empty list or set)
+127.0.0.1:6379>
+```
