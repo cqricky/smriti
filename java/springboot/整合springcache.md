@@ -55,6 +55,8 @@ public class DemoService extends BaseService {
 
 	// 如果使用@CachePut，请保证方法返回值为Demo，且主键不为空
 	// @CachePut(value = "demoCache", key = "#demo.id")
+	// 多个缓存操作可使用@Caching分组
+	// @Caching(put = { @CachePut(value = "demoCache", key = "#demo.id") })
 	public Demo save(Demo demo) {
 		Date curDate = new Date();
 		demo.setCreatedAt(curDate);
