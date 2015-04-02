@@ -3,3 +3,4 @@
 - [spring-boot-sample-web-secure-jdbc](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-web-secure-jdbc)
 - [spring-boot-sample-web-secure-custom](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-web-secure-custom)
 - [spring-boot-sample-web-method-security](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-web-method-security)
+- [spring-boot-sample-web-shiro](https://github.com/Utgard/spring-boot-samples/tree/master/spring-boot-sample-web-shiro)
