@@ -14,6 +14,7 @@
 - [整合Redis](整合Redis.md)
 - [整合springsession](整合springsession.md)
 - [整合springcache](整合springcache.md)
+- [整合shiro](整合shiro.md)
 - [视图支持](视图支持.md)
 - [数据迁移](数据迁移.md)
 - [security](security.md)
