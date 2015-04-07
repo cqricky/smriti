@@ -11,8 +11,11 @@ public class DemoController {
 	@Value("${foo:xxxx}")
 	String foo;
 
+	@Value("${spring.datasource.url}")
+	String datasourceUrl;
+
 	@RequestMapping("/")
 	public String index() {
-		return foo;
+		return datasourceUrl;
 	}
 }
