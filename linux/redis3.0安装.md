@@ -21,3 +21,22 @@ redis-cli
 redis-sentinel
 redis-server
 ```
+- 配置
+```shell
+$ cp redis.conf  /etc/
+ 
+$ echo vm.overcommit_memory=1 >> /etc/sysctl.conf
+
+$ sysctl vm.overcommit_memory=1
+
+$ vim /etc/redis.conf
+daemonize yes
+```
+
+- 启动redis
+```shell
+redis-server /etc/redis.conf
+ps aux | grep redis
+root      6834  0.2  0.3 133396  7440 ?        Ssl  14:09   0:00 redis-server *:6379
+root      6844  0.0  0.0 103304   808 pts/0    S+   14:09   0:00 grep redis
+```
