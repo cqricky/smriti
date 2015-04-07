@@ -10,3 +10,8 @@ server:
   port: 8888
 management:
   context_path: /admin
+  
+security:
+  user: 
+    name: admin
+    password: foo@bar
