@@ -13,3 +13,12 @@ $ tar zxf lua-5.3.0.tar.gz
 $ cd lua-5.3.0
 $ make linux test
 ```
+
+- 验证
+```shell
+[root@localhost ~]# lua
+Lua 5.1.4  Copyright (C) 1994-2008 Lua.org, PUC-Rio
+> print("hello,world!")
+hello,world!
+>
+```
