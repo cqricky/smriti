@@ -91,3 +91,7 @@ public class MsgConfig {
 	}
 }
 ```
+- 消息队列
+```
+
+```
