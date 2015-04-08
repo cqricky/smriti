@@ -92,6 +92,24 @@ public class MsgConfig {
 }
 ```
 - 消息队列
-```
+```java
+	private static final String queue = "queue:msg";
 
+	@Scheduled(cron = "0/3 * * * * ?")
+	public void test1() {
+		msgRedisTemplate.opsForList().rightPush(queue, new Msg(RandomStringUtils.randomAlphabetic(10), RandomStringUtils.randomAlphabetic(10)));
+	}
+
+	@PostConstruct
+	public void test2() {
+		new Thread() {
+			@Override
+			public void run() {
+				while (true) {
+					Msg msg = msgRedisTemplate.opsForList().leftPop(queue, 3, TimeUnit.MINUTES);
+					System.out.println("msg:" + msg);
+				}
+			};
+		}.start();
+	}
 ```
