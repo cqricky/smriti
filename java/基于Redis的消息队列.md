@@ -95,7 +95,7 @@ public class MsgConfig {
 ```java
 	private static final String queue = "queue:msg";
 
-	@Scheduled(cron = "* * * * * ?")
+	@Scheduled(cron = "0/1 * * * * ?")
 	public void test1() {
 		msgRedisTemplate.opsForList().rightPush(queue, new Msg(RandomStringUtils.randomAlphabetic(10), RandomStringUtils.randomAlphabetic(10)));
 	}
@@ -106,7 +106,7 @@ public class MsgConfig {
 			@Override
 			public void run() {
 				while (true) {
-					Msg msg = msgRedisTemplate.opsForList().leftPop(queue, Long.MAX_VALUE, TimeUnit.DAYS);
+					Msg msg = msgRedisTemplate.opsForList().leftPop(queue, Byte.MAX_VALUE, TimeUnit.DAYS);
 					System.out.println("msg:" + msg);
 				}
 			};
