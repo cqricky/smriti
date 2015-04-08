@@ -68,7 +68,8 @@ public class MsgConfig {
 	RedisMessageListenerContainer container() {
 		RedisMessageListenerContainer container = new RedisMessageListenerContainer();
 		container.setConnectionFactory(connectionFactory);
-		container.addMessageListener(messageListenerAdapter(), new ChannelTopic("pub.xxx"));
+		// container.addMessageListener(messageListenerAdapter(), new ChannelTopic("pub.xxx"));
+		container.addMessageListener(messageListenerAdapter(), new PatternTopic("pub.*"));
 
 		return container;
 	}
