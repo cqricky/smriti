@@ -35,10 +35,30 @@ public class RedisLock implements Lock{
 	Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
-	StringRedisTemplate stringRedisTemplate;
-	
+	RedisTemplate<String, Long> longRedisTemplate;
+
 	private static final String LOCK_PREFIX = "lock:";
-	private static final int LOCK_EXPIRE_SECONDS = 5;
+	private static final long LOCK_EXPIRE_SECONDS = 5;
+
+	private final RedisScript<Boolean> lockScript = new RedisScript<Boolean>() {
+
+		private final String script = "local setResult = redis.call('SETNX',KEYS[1],ARGV[1]);if setResult == 1 then redis.call('EXPIRE',KEYS[1],ARGV[2]) end;return setResult;";
+
+		@Override
+		public String getSha1() {
+			return DigestUtils.sha1DigestAsHex(script);
+		}
+
+		@Override
+		public Class<Boolean> getResultType() {
+			return Boolean.class;
+		}
+
+		@Override
+		public String getScriptAsString() {
+			return script;
+		}
+	};
 
 	@Override
 	public boolean tryLock(String target) {
@@ -53,63 +73,41 @@ public class RedisLock implements Lock{
 			return Boolean.FALSE;
 		}
 		
-		long start = System.nanoTime();
+		long start = System.currentTimeMillis();
+		long timeoutMilliSeconds = TimeUnit.MILLISECONDS.convert(timeout, unit);
+		long end = start + timeoutMilliSeconds;
+
 		do {
 			boolean success = setTarget(target);
 			if (success) {
-				//5秒后自动释放锁
-				// TODO 如果获取锁后宕机，会导致死锁
-				stringRedisTemplate.expire(LOCK_PREFIX + target, LOCK_EXPIRE_SECONDS, TimeUnit.SECONDS);
-				
 				logger.info("try lock target: " + target + " success.");
 				return Boolean.TRUE;
 			}
 			
+			if (timeout <= 0) {
+				return Boolean.FALSE;
+			}
+
 			try {
 				TimeUnit.MILLISECONDS.sleep(100);
 			} catch (InterruptedException e) {
 				logger.warn(e.getMessage());
 			}
-		} while (System.nanoTime()-start<unit.toNanos(timeout));
-		
+		} while (System.currentTimeMillis() < end);
+
 		logger.info("try lock target: " + target + " fail,cause timeout.");
 		return Boolean.FALSE;
 	}
 	
 	private boolean setTarget(String target){
-		return stringRedisTemplate.opsForValue().setIfAbsent(LOCK_PREFIX + target, System.currentTimeMillis()+"");
+		return longRedisTemplate.execute(lockScript, Lists.newArrayList(LOCK_PREFIX + target), System.currentTimeMillis(), LOCK_EXPIRE_SECONDS);
 	}
 
 	@Override
 	public void unLock(String target) {
 		logger.info("release lock, target :" + target);  
-		stringRedisTemplate.delete(LOCK_PREFIX + target);
+		longRedisTemplate.delete(LOCK_PREFIX + target);
 	}
 
-	/**
-	 * 定期检查并清理死锁
-	 */
-	//@PostConstruct
-	public void init() {
-		new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				Set<String> keys = stringRedisTemplate.keys(LOCK_PREFIX+"*");
-				for (String key : keys) {
-					String value = stringRedisTemplate.opsForValue().get(key);
-					if (System.currentTimeMillis() - Long.parseLong(value)> 1000*60) {
-						stringRedisTemplate.delete(key);
-					}
-				}
-				
-				try {
-					TimeUnit.MINUTES.sleep(10);
-				} catch (InterruptedException e) {
-					logger.warn(e.getMessage());
-				}
-			}
-		}).start();
-	}
 }
 ```
