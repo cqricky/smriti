@@ -1,3 +1,4 @@
+- 官方示例
 ```shell
 $ git clone https://github.com/spring-cloud/spring-cloud-config.git
 $ mvn clean install
@@ -28,4 +29,9 @@ $ curl localhost:8080/env
 }
 $ curl localhost:8080/env/foo
 bar
+```
+
+- 定制化
+```
+
 ```
