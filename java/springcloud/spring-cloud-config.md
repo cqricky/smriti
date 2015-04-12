@@ -124,3 +124,15 @@ spring.jpa.show-sql=true
 spring.jpa.hibernate.ddl-auto=create-drop
 spring.jpa.database=mysql
 ```
+```java
+@Configuration
+@ComponentScan
+@EnableAutoConfiguration
+@EnableConfigServer
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+```
