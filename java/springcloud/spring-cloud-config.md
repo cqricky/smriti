@@ -91,3 +91,36 @@ bar
 
 </project>
 ```
+```yml
+info:
+  component: Config Server
+spring:
+  application:
+    name: configserver
+  profiles:
+    active: native
+
+server:
+  port: 8888
+management:
+  context_path: /admin
+  
+security:
+  user: 
+    name: admin
+    password: foo@bar
+```
+```properties
+foo=bar
+
+spring.datasource.url=jdbc:mysql://localhost/demo
+spring.datasource.username=root
+spring.datasource.password=
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+
+# JPA (JpaBaseConfiguration, HibernateJpaAutoConfiguration)
+spring.jpa.openInView=true
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.database=mysql
+```
