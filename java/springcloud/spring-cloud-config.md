@@ -111,7 +111,7 @@ security:
     name: admin
     password: foo@bar
 ```
-将具体配置放在config目录下
+将具体配置放在config目录下，命名跟client端spring.application.name保持一致
 ```properties
 foo=bar
 
