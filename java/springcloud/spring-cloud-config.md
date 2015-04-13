@@ -91,6 +91,7 @@ bar
 
 </project>
 ```
+默认情况下，Config Server通过git加载配置文件，将profile设置为native，让其从本地文件加载配置
 ```yml
 info:
   component: Config Server
