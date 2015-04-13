@@ -111,6 +111,7 @@ security:
     name: admin
     password: foo@bar
 ```
+将具体配置放在config目录下
 ```properties
 foo=bar
 
@@ -125,6 +126,7 @@ spring.jpa.show-sql=true
 spring.jpa.hibernate.ddl-auto=create-drop
 spring.jpa.database=mysql
 ```
+通过@EnableConfigServer注解，开启ConfigServer
 ```java
 @Configuration
 @ComponentScan
