@@ -1,57 +1,90 @@
 package demo;
 
+import javax.sql.DataSource;
+
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
-import org.springframework.batch.core.scope.context.ChunkContext;
-import org.springframework.batch.core.step.tasklet.Tasklet;
-import org.springframework.batch.repeat.RepeatStatus;
+import org.springframework.batch.item.ItemProcessor;
+import org.springframework.batch.item.ItemReader;
+import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
+import org.springframework.batch.item.database.JdbcBatchItemWriter;
+import org.springframework.batch.item.file.FlatFileItemReader;
+import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
+import org.springframework.batch.item.file.mapping.DefaultLineMapper;
+import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.core.io.ClassPathResource;
+
+import demo.batch.Person;
+import demo.batch.PersonItemProcessor;
 
 @Configuration
 @EnableBatchProcessing
 @EnableAutoConfiguration
-@Import({ DataSourceConfig.class })
+@Import(DataSourceConfig.class)
 public class BatchConfiguration {
 
 	@Autowired
-	private JobBuilderFactory jobBuilderFactory;
+	DataSource dataSource;
 
-	@Autowired
-	private StepBuilderFactory stepBuilderFactory;
-
+	// tag::readerwriterprocessor[]
 	@Bean
-	public Step step1() {
-		return stepBuilderFactory.get("step1").tasklet(new Tasklet() {
-			@Override
-			public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
-				System.out.println("==============step1===============");
-				return null;
+	public ItemReader<Person> reader() {
+		FlatFileItemReader<Person> reader = new FlatFileItemReader<Person>();
+		reader.setResource(new ClassPathResource("sample-data.csv"));
+		reader.setLineMapper(new DefaultLineMapper<Person>() {
+			{
+				setLineTokenizer(new DelimitedLineTokenizer() {
+					{
+						setNames(new String[] { "firstName", "lastName" });
+					}
+				});
+				setFieldSetMapper(new BeanWrapperFieldSetMapper<Person>() {
+					{
+						setTargetType(Person.class);
+					}
+				});
 			}
-		}).build();
+		});
+		return reader;
 	}
 
 	@Bean
-	public Step step2() {
-		return stepBuilderFactory.get("step2").tasklet(new Tasklet() {
-			@Override
-			public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
-				System.out.println("==============step2===============");
-				return null;
-			}
-		}).build();
+	public ItemProcessor<Person, Person> processor() {
+		return new PersonItemProcessor();
 	}
 
 	@Bean
-	public Job job(Step step1, Step step2) throws Exception {
-		return jobBuilderFactory.get("job1").incrementer(new RunIdIncrementer()).start(step1).next(step2).build();
+	public ItemWriter<Person> writer() {
+		JdbcBatchItemWriter<Person> writer = new JdbcBatchItemWriter<Person>();
+		writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Person>());
+		writer.setSql("INSERT INTO people (first_name, last_name) VALUES (:firstName, :lastName)");
+		writer.setDataSource(dataSource);
+		return writer;
 	}
+
+	// end::readerwriterprocessor[]
+
+	// tag::jobstep[]
+	@Bean
+	public Job importUserJob(JobBuilderFactory jobs, Step s1) {
+		return jobs.get("importUserJob").incrementer(new RunIdIncrementer()).flow(s1).end().build();
+	}
+
+	@Bean
+	public Step step1(StepBuilderFactory stepBuilderFactory, ItemReader<Person> reader, ItemWriter<Person> writer, ItemProcessor<Person, Person> processor) {
+		return stepBuilderFactory.get("step1").<Person, Person> chunk(10).reader(reader).processor(processor).writer(writer).build();
+	}
+
+	// end::jobstep[]
+
 }
