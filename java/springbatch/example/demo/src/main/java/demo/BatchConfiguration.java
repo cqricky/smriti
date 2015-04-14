@@ -33,13 +33,25 @@ public class BatchConfiguration {
 		return stepBuilderFactory.get("step1").tasklet(new Tasklet() {
 			@Override
 			public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
+				System.out.println("==============step1===============");
 				return null;
 			}
 		}).build();
 	}
 
 	@Bean
-	public Job job(Step step1) throws Exception {
-		return jobBuilderFactory.get("job1").incrementer(new RunIdIncrementer()).start(step1).build();
+	public Step step2() {
+		return stepBuilderFactory.get("step2").tasklet(new Tasklet() {
+			@Override
+			public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
+				System.out.println("==============step2===============");
+				return null;
+			}
+		}).build();
+	}
+
+	@Bean
+	public Job job(Step step1, Step step2) throws Exception {
+		return jobBuilderFactory.get("job1").incrementer(new RunIdIncrementer()).start(step1).next(step2).build();
 	}
 }
