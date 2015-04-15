@@ -3,6 +3,8 @@ package demo;
 import javax.sql.DataSource;
 
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobExecution;
+import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -77,7 +79,18 @@ public class BatchConfiguration {
 	// tag::jobstep[]
 	@Bean
 	public Job importUserJob(JobBuilderFactory jobs, Step s1) {
-		return jobs.get("importUserJob").preventRestart().incrementer(new RunIdIncrementer()).flow(s1).end().build();
+		return jobs.get("importUserJob").listener(new JobExecutionListener() {
+
+			@Override
+			public void beforeJob(JobExecution jobExecution) {
+				System.out.println("beforeJob");
+			}
+
+			@Override
+			public void afterJob(JobExecution jobExecution) {
+				System.out.println("afterJob");
+			}
+		}).incrementer(new RunIdIncrementer()).flow(s1).end().build();
 	}
 
 	@Bean
