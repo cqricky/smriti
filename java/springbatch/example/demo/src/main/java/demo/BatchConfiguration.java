@@ -84,11 +84,13 @@ public class BatchConfiguration {
 			@Override
 			public void beforeJob(JobExecution jobExecution) {
 				System.out.println("beforeJob");
+				System.out.println(jobExecution.toString());
 			}
 
 			@Override
 			public void afterJob(JobExecution jobExecution) {
 				System.out.println("afterJob");
+				System.out.println(jobExecution.toString());
 			}
 		}).incrementer(new RunIdIncrementer()).flow(s1).end().build();
 	}
