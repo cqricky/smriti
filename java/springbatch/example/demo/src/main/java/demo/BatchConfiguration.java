@@ -77,7 +77,7 @@ public class BatchConfiguration {
 	// tag::jobstep[]
 	@Bean
 	public Job importUserJob(JobBuilderFactory jobs, Step s1) {
-		return jobs.get("importUserJob").incrementer(new RunIdIncrementer()).flow(s1).end().build();
+		return jobs.get("importUserJob").preventRestart().incrementer(new RunIdIncrementer()).flow(s1).end().build();
 	}
 
 	@Bean
