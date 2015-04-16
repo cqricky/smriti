@@ -82,7 +82,7 @@ public class BatchConfiguration {
 	// tag::jobstep[]
 	@Bean
 	public Job importUserJob(JobBuilderFactory jobs, Step s1) {
-		return jobs.get("importUserJob").listener(new JobExecutionListener() {
+		return jobs.get("importUserJob").preventRestart().listener(new JobExecutionListener() {
 
 			@Override
 			public void beforeJob(JobExecution jobExecution) {
