@@ -1,5 +1,7 @@
 package demo;
 
+import java.util.concurrent.Executors;
+
 import javax.sql.DataSource;
 
 import org.springframework.batch.core.Job;
@@ -12,7 +14,10 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
+import org.springframework.batch.core.launch.support.SimpleJobLauncher;
+import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
@@ -29,6 +34,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.task.support.TaskExecutorAdapter;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import demo.batch.Person;
@@ -117,4 +123,12 @@ public class BatchConfiguration {
 
 	// end::jobstep[]
 
+	@Bean
+	JobLauncher jobLauncher(JobRepository jobRepository) {
+		SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
+		jobLauncher.setJobRepository(jobRepository);
+		jobLauncher.setTaskExecutor(new TaskExecutorAdapter(Executors.newCachedThreadPool()));
+
+		return jobLauncher;
+	}
 }
