@@ -27,8 +27,9 @@ public class BatchService {
 
 	@Scheduled(cron = "0/5 * * * * ?")
 	public void test() throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException, JobParametersInvalidException {
+		System.out.println("xxxxxxxxx");
 		JobExecution result = jobLauncher.run(job, jobParametersBuilder.addDate("time", new Date()).toJobParameters());
-
-		System.out.println(result);
+		System.out.println("ooooooooo");
+		System.out.println("result:" + result);
 	}
 }
