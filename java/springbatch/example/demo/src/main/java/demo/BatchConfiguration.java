@@ -25,9 +25,11 @@ import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import demo.batch.Person;
 import demo.batch.PersonItemProcessor;
@@ -35,6 +37,8 @@ import demo.batch.PersonItemProcessor;
 @Configuration
 @EnableBatchProcessing
 @EnableAutoConfiguration
+@EnableScheduling
+@ComponentScan
 @Import(DataSourceConfig.class)
 public class BatchConfiguration {
 
@@ -82,7 +86,7 @@ public class BatchConfiguration {
 	// tag::jobstep[]
 	@Bean
 	public Job importUserJob(JobBuilderFactory jobs, Step s1) {
-		return jobs.get("importUserJob").preventRestart().listener(new JobExecutionListener() {
+		return jobs.get("importUserJob").listener(new JobExecutionListener() {
 
 			@Override
 			public void beforeJob(JobExecution jobExecution) {
