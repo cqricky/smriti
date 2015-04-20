@@ -9,11 +9,11 @@
 		</dependency>
 ```
 
-- 开启RedisHttpSession
+- 开启RedisHttpSession,可通过maxInactiveIntervalInSeconds设置session过期时间
 ```java
 //HttpSessionConfig.java
 @Configuration
-@EnableRedisHttpSession 
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 604800)
 public class HttpSessionConfig {
 
     @Bean
