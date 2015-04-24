@@ -8,6 +8,8 @@ yum install Percona-XtraDB-Cluster-56
 192.168.1.152 node-2
 192.168.1.153 node-3
 
+# 关闭防火墙及selinux
+
 # 启动测试
 /etc/init.d/mysql start
 
