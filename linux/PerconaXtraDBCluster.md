@@ -3,6 +3,11 @@
 yum install http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
 yum install Percona-XtraDB-Cluster-56
 
+# 修改/etc/hosts
+192.168.1.151 node-1
+192.168.1.152 node-2
+192.168.1.153 node-3
+
 # 启动测试
 /etc/init.d/mysql start
 
@@ -31,7 +36,7 @@ Bye
 [root@master ~]# vim /etc/my.cnf
 [mysqld]
 wsrep_provider=/usr/lib64/libgalera_smm.so
-# wsrep_cluster_address=gcomm://192.168.1.152
+# wsrep_cluster_address=gcomm://
 wsrep_slave_threads=8
 wsrep_sst_method=rsync
 binlog_format=ROW
