@@ -50,7 +50,7 @@ wsrep_sst_auth=sst:123456
 [root@master ~]# vim /etc/my.cnf
 [mysqld]
 wsrep_provider=/usr/lib64/libgalera_smm.so
-# wsrep_cluster_address="gcomm://node-1"
+wsrep_cluster_address="gcomm://node-1"
 wsrep_slave_threads=8
 wsrep_sst_method=rsync
 binlog_format=ROW
@@ -62,7 +62,7 @@ wsrep_sst_auth=sst:123456
 [root@master ~]# vim /etc/my.cnf
 [mysqld]
 wsrep_provider=/usr/lib64/libgalera_smm.so
-# wsrep_cluster_address="gcomm://node-2"
+wsrep_cluster_address="gcomm://node-2"
 wsrep_slave_threads=8
 wsrep_sst_method=rsync
 binlog_format=ROW
