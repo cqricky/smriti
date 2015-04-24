@@ -28,5 +28,16 @@ mysql> quit
 Bye
 
 # 配置my.cnf
+[root@master ~]# vim /etc/my.cnf
+[mysqld]
+wsrep_provider=/usr/lib64/libgalera_smm.so
+wsrep_cluster_address=gcomm://192.168.1.152
+wsrep_slave_threads=8
+wsrep_sst_method=rsync
+binlog_format=ROW
+default_storage_engine=InnoDB
+innodb_autoinc_lock_mode=2
+wsrep_sst_auth=sst:123456
+
 
 ```
