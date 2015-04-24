@@ -9,6 +9,8 @@ yum install Percona-XtraDB-Cluster-56
 192.168.1.153 node-3
 
 # 关闭防火墙及selinux
+iptables -A INPUT -i eth0 -p tcp --dport 3306 -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp --dport 4567 -j ACCEPT
 
 # 启动测试
 /etc/init.d/mysql start
