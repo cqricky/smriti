@@ -46,7 +46,7 @@ chown -R mysql:mysql /usr/local/mysql
 
 echo 'export PATH=/usr/local/mysql/bin:$PATH' > /etc/profile.d/mysql.sh && . /etc/profile.d/mysql.sh
 
-./scripts/mysql_install_db --user=mysql --datadir=/data/mysql &
+/usr/local/mysql/scripts/mysql_install_db --user=mysql --datadir=/data/mysql &
 service mysqld start
 
 #通过客户端访问并修改密码
