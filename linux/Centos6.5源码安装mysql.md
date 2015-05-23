@@ -26,7 +26,7 @@ cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/data/mysql -DSY
 make && make install
 
 #初始化
-#cp /usr/local/mysql/support-files/my-large.cnf /etc/my.cnf
+#cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf
 cp -p /usr/local/mysql/support-files/mysql.server /etc/rc.d/init.d/mysqld
 chmod +x /etc/rc.d/init.d/mysqld
 chkconfig --level 2345 mysqld on
