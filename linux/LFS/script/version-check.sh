@@ -1,9 +1,5 @@
 #!/bin/bash
 
-yum -y update
-yum -y groupinstall "Development tools"
-yum -y install tar texinfo
-
 export LC_ALL=C
 bash --version | head -n1 | cut -d" " -f2-4
 echo "/bin/sh -> `readlink -f /bin/sh`"
