@@ -1,7 +1,12 @@
 #!/bin/bash
 
-FORMAT_DEV=$1
-echo "dev $FORMAT_DEV will be format..."
+if [ -b "$1" ];then
+FORMAT_DEV=$1;
+echo "deicve $FORMAT_DEV will be format..."
+else
+echo "please enter a device..."
+exit 1
+fi
 
 sudo fdisk $FORMAT_DEV << "EOF"
 p
