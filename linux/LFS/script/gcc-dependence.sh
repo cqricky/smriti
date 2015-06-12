@@ -4,7 +4,7 @@ sudo apt-get install -y  m4
 
 cd /tmp 
 sudo rm -rf gmp-*
-wget http://ftp.gnu.org/gnu/gmp/gmp-4.3.2.tar.gz
+wget http://mirror.hust.edu.cn/gnu/gmp/gmp-4.3.2.tar.gz
 tar xf gmp-4.3.2.tar.gz
 cd gmp-4.3.2 && ./configure && sudo make && sudo  make install
 
