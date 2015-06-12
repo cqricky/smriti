@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo apt-get install -y  m4
+sudo apt-get install lib32z1-dev
 
 cd /tmp 
 sudo rm -rf gmp-*
@@ -17,5 +18,4 @@ sudo rm -rf mpc-*
 wget http://mirrors.ustc.edu.cn/gnu/mpc/mpc-1.0.3.tar.gz
 tar xf mpc-1.0.3.tar.gz
 cd mpc-1.0.3 && ./configure && sudo make && sudo  make install
-
 
