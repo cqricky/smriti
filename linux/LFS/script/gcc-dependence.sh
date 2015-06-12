@@ -9,9 +9,9 @@ tar xf gmp-4.3.2.tar.gz
 cd gmp-4.3.2 && ./configure && sudo make && sudo  make install
 
 sudo rm -rf mpfr-*
-wget http://www.mpfr.org/mpfr-current/mpfr-3.1.2.tar.gz
+wget http://mirror.hust.edu.cn/gnu/mpfr/mpfr-3.1.2.tar.gz
 tar xf mpfr-3.1.2.tar.gz
-r-3.1.2 && ./configure && sudo .ake && sudo  make install
+cd mpfr-3.1.2 && ./configure && sudo make && sudo  make install
 
 sudo rm -rf mpc-*
 wget http://mirrors.ustc.edu.cn/gnu/mpc/mpc-1.0.3.tar.gz
