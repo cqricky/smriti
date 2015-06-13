@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 
 if [ -b "$1" ];then
 FORMAT_DEV=$1;
@@ -8,24 +8,19 @@ echo "please enter a device..."
 exit 1
 fi
 
+for target in `ls $FORMAT_DEV*`;do
+	umount $target; 
+done
 sudo fdisk $FORMAT_DEV << "EOF"
 p
 d
-
+1
 d
-
+2
 d
-
+3
 d
-
-d
-
-d
-
-d
-
-d
-
+4
 
 n
 p
