@@ -16,8 +16,8 @@ wget -O mysql-5.6.21.tar.gz http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5
 #添加用户组
 groupadd mysql
 useradd -g mysql mysql -s /sbin/nologin
-mkdir /data/mysql
-mkdir /usr/local/mysql
+mkdir -p /data/mysql
+mkdir -p /usr/local/mysql
 
 #编译
 tar -zxvf  mysql-5.6.21.tar.gz
