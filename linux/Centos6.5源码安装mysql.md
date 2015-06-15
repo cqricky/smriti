@@ -46,11 +46,17 @@ chown -R mysql:mysql /usr/local/mysql
 
 echo 'export PATH=/usr/local/mysql/bin:$PATH' > /etc/profile.d/mysql.sh && . /etc/profile.d/mysql.sh
 
-/usr/local/mysql/scripts/mysql_install_db --user=mysql --datadir=/data/mysql &
+cd /usr/local/mysql/
+./scripts/mysql_install_db --user=mysql --datadir=/data/mysql &
 service mysqld start
 
 #通过客户端访问并修改密码
 mysql
+mysql> use mysql;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
 mysql> select user,host,password from user;
 +------+--------------+----------+
 | user | host         | password |
