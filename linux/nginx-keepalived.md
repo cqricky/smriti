@@ -17,7 +17,7 @@ cp /usr/local/etc/rc.d/init.d/keepalived /etc/init.d/
 cp /usr/local/etc/sysconfig/keepalived /etc/sysconfig/
 mkdir /etc/keepalived/
 mkdir /etc/keepalived/script/
-cp keepalived-master.conf /etc/keepalived/
+cp keepalived-master.conf /etc/keepalived/keepalived.conf
 cp nginx.sh /etc/keepalived/script
 
 # slave 
@@ -26,7 +26,7 @@ cp /usr/local/etc/rc.d/init.d/keepalived /etc/init.d/
 cp /usr/local/etc/sysconfig/keepalived /etc/sysconfig/
 mkdir /etc/keepalived/
 mkdir /etc/keepalived/script/
-cp keepalived-master.conf /etc/keepalived/
+cp keepalived-slave.conf /etc/keepalived/keepalived.conf
 cp nginx.sh /etc/keepalived/script
 
 ```
